@@ -1,8 +1,12 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Russo One', sans-serif;
     height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 .content{
@@ -49,7 +53,7 @@ svg {
 }
 
 .order {
-    width: 150px;
+    width: 200px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -57,7 +61,7 @@ svg {
     background: #6369d1;
     font-family: 'Russo One';
     font-size: 37px;
-    
+    text-shadow: 0 3px 3px rgb(0 0 0 /0.4);
 }
 
 form {
@@ -73,7 +77,6 @@ form {
     overflow: hidden;
 }
 
-
 form{
     position: absolute;
     z-index: 1000;
@@ -81,9 +84,30 @@ form{
     left: 0px;
     top: 75px;
     border-radius: 0 0 20px 0;
-    width:225px;
+    width:275px;
 }
 
 input{
-    margin-bottom: 5px;
+    margin: 0 30px;
+    border-bottom: 3px solid #000;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-family: 'Russo One';
+    font-size: 19.5px;
+}
+
+input[type = "submit"] {
+    margin: 20px 30px;
+    background-color: #6369d1;
+    border: none;
+    font-size: 25px;
+    height: 60px;
+    border-radius: 0 45px 0 45px;
+
+}
+
+label {
+    margin: 20px 30px 0 30px;
+    font-size: 25px;
 }
