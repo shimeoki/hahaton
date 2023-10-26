@@ -11,9 +11,29 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
 
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>SpaceView</title>
 </head>
 <body>
-    <h1>Спутник</h1>
+    <header>
+        <h1>SpaceZ</h1>
+        <div class="order">Заказ снимка</div>
+        <div class="view">Просмотр спутников</div>
+    </header>
+    
+    <form action="">
+        <label for="latitude">Широта</label>
+        <input type="number" name="latitude" id="latitude">
+        <label for="longitude">Долгота</label>
+        <input type="number" name="longitude" id="longitude">
+        <label for="radius">Радиус</label>
+        <input type="number" name="radius" id="radius">
+        <label for="email">Почта для отправки снимка</label>
+        <input type="email" name="email" id="email">
+        <input type="submit" value="Отправить запрос">
+    </form>
 </body>
 </html>
