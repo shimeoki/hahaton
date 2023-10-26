@@ -26,8 +26,8 @@ body {
 header {
     border-bottom: 1px solid #ccc;
     display: flex;
-    padding: 5px;
-    margin-bottom: 10px;
+    height: 75px;
+    background: black;
 }
 
 
@@ -39,15 +39,25 @@ h1 {
 }
 
 .view {
-    width: 90px;
+    width: 75px;
     text-align: center;
-    margin: 0 10px;
+    background: #0F7173;
+}
+
+svg {
+    filter: drop-shadow(0 4px 4px rgb(0 0 0 /0.4));
 }
 
 .order {
-    width: 65px;
+    width: 150px;
     text-align: center;
-    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6369d1;
+    font-family: 'Russo One';
+    font-size: 37px;
+    
 }
 
 form {
@@ -61,4 +71,19 @@ form {
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+
+
+form{
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff;
+    left: 0px;
+    top: 75px;
+    border-radius: 0 0 20px 0;
+    width:225px;
+}
+
+input{
+    margin-bottom: 5px;
 }
