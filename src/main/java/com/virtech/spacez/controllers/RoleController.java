@@ -1,4 +1,4 @@
-package com.virtech.spacez;
+package com.virtech.spacez.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.virtech.spacez.entities.Role;
+import com.virtech.spacez.repositories.RoleRepository;
 
 
 @Controller

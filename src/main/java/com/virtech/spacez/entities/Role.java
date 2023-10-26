@@ -1,4 +1,4 @@
-package com.virtech.spacez;
+package com.virtech.spacez.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
