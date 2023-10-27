@@ -51,6 +51,10 @@ public class PseudoEulerAngles {
 		zRotation = result.zRotation;
 	}
 
+	public Vector3 toVector3() throws Exception {
+		return toVector3(1, 0, 0);
+	}
+
 	public Vector3 toVector3(double x, double y, double z) throws Exception {
 		Matrix result = new Matrix(new double[][]{new double[]{x, y, z}});
 
@@ -69,10 +73,6 @@ public class PseudoEulerAngles {
 				}));
 
 		return new Vector3(result.matrix[0][0], result.matrix[0][1], result.matrix[0][2]);
-	}
-
-	public Vector3 toVector3() throws Exception {
-		return toVector3(1, 0, 0);
 	}
 
 	public Coordinates coordinates() {
