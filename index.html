@@ -18,11 +18,24 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <script src="scripts/jQuerry.js"></script>
+    <script src="scripts/jQuery.js"></script>
     <script type="module" src="scripts/script.js"></script>
     <title>SpaceView</title>
 </head>
 <body>
+    
+    <div class="logo">
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800.00181 800.00828">
+          <g>
+            <path d="M646.98179,122.12827c-2.73999,16.79999-10.03998,36.51001-29.26001,54.65997-50.12994,47.32001-115.06,85.76001-174.19995,121.37-144.89001,84.92004-297.17999,192.60004-341.17999,357.15002-1.04004,3.90002-6.07001,5.02002-8.67004,1.92999C37.54178,590.45829,2.83182,505.05827,.17179,411.62827-3.23818,292.16825,44.34183,185.01829,122.88181,110.00828H636.62359c6.39311,0,11.38918,5.68559,10.37786,11.9982-.0065,.0406-.01306,.0812-.01966,.1218Z" style="fill: #fbfef9;"/>
+            <path d="M600.07916,65.52263l-454.25735,24.21563C218.40183,30.41825,312.58182-3.63174,415.55179,.30827c68.09866,2.60509,131.83585,22.23008,187.07966,54.75068,4.80022,2.82577,3.01001,10.16717-2.55229,10.46368Z" style="fill: #fbfef9;"/>
+            <path d="M800.00181,400.00828c0,112.98999-46.84998,215.02997-122.17999,287.76996l-487.68409-22.85598c-25.88347-1.21306-40.16075-30.75441-24.87254-51.6756,55.37033-75.7717,137.39537-128.5208,227.25664-171.29838,75.71997-36.5,157.83997-69.44,234.01996-106.40002,29.05005-14.14001,57.57001-28.94,84.28003-48.08997,20.10999-14.15002,38.82001-31.41003,54.15997-51.36005,22.5,50.03003,35.02002,105.5,35.02002,163.91003Z" style="fill: #fbfef9;"/>
+            <path d="M657.6218,706.00828c-69.59998,58.64996-159.47998,94-257.62,94s-188.01001-35.35004-257.60999-94H657.6218Z" style="fill: #fbfef9;"/>
+          </g>
+          <path d="M728.96752,251.83976c-15.87748-69.89524,35.9521-177.60255,48.48376-206.96977-13.72084,22.49488-23.76121,25.47801-23.76121,25.47801,0,0-45.30068,90.92636-131.22151,126.18488,0,0,33.0363,9.65659,56.16015,22.04866,23.12385,12.39206,50.33881,33.25823,50.33881,33.25823Z" style="fill: #fbfef9;"/>
+        </svg>
+    </div>
     <header>
         <div class="order">Заказ</div>
     
@@ -61,24 +74,32 @@
     </header>
 
     <div class="login-signup">
-        
+
         <div class="selection">
-            <span class = "login-select">Вход</span>
+            <span class = "login-select selected">Вход</span>
             <span class = "signup-select">Регистрация</span>
         </div>
-        
+        <form action="POST">
+            <label for="login">Логин</label>
+            <input type="text" name="latitude" id="login" value = "">
+
+            <label for="password">Пароль</label>
+            <input type="text" name="latitude" id="password" value = "">
+
+            <input type="submit" value="Вход" method = "POST">
+        </form>
     </div>
 
     <div class="content">
-        <form action="">
+        <form action="URL">
             <label for="latitude">Широта*</label>
-            <input type="number" name="latitude" id="latitude" value = "">
+            <input type="number" name="latitude" id="latitude" value = "" placeholder="23.34353248">
 
             <label for="longitude">Долгота*</label>
-            <input type="number" name="longitude" id="longitude" value = "">
+            <input type="number" name="longitude" id="longitude" value = "" placeholder="11.243324219">
 
             <label for="radius">Радиус*</label>
-            <input type="number" name="radius" id="radius">
+            <input type="number" name="radius" id="radius" placeholder="12000">
 
             <input type="submit" value="Отправить" method = "POST">
         </form>
