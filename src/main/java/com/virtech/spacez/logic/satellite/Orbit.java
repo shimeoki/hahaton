@@ -14,7 +14,6 @@ public class Orbit {
         this.normalVector = directionAngle.toVector3(0, 0, 1);
         this.majorAxis = majorAxis;
         this.minorAxis = minorAxis;
-
     }
 
 
