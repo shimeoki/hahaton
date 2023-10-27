@@ -1,34 +1,42 @@
 package com.virtech.spacez.logic.satellite;
 
 
+import com.virtech.spacez.logic.Time;
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
 
 public class Satellite {
 	public final int id;
-	public PseudoEulerAngles currentPositionAngle;
+	public Orbit orbit;
 	public PseudoEulerAngles startPositionAngle;
-
-    // In angles per minute
-    public double currentAngularSpeed;
-    public boolean clockwiseRotation;
-    public double fovAngle;
-    public Orbit orbit;
+	public boolean clockwiseRotation;
+	public double fovAngle;
 
 
-    public Satellite(int id, PseudoEulerAngles startPositionAngle, boolean clockwiseRotation,
-                     double fovAngle, Orbit orbit) {
-        this.startPositionAngle = startPositionAngle;
-        this.clockwiseRotation = clockwiseRotation;
-        this.fovAngle = fovAngle;
-        this.id = id;
-        this.orbit = orbit;
-        // Пока что орбита круговая
+	public Satellite(int id, Orbit orbit, PseudoEulerAngles startPositionAngle, boolean clockwiseRotation, double fovAngle) {
+		this.id = id;
+		this.orbit = orbit;
+		this.startPositionAngle = startPositionAngle;
+		this.clockwiseRotation = clockwiseRotation;
+		this.fovAngle = fovAngle;
+	}
 
-        this.currentAngularSpeed = Math.sqrt(Earth.u / this.orbit.majorAxis);
-    }
-    public Satellite(int id) throws Exception{
-        this.id = id;
-        new Satellite(0, new PseudoEulerAngles(0, 0), true, 0, new Orbit(0, 0));
-    }
-	// In angles per minute
+	public double getAngularVelocity() {
+		return getAngularVelocity(Time.current());
+	}
+
+	public double getAngularVelocity(double time) {
+		// Round orbit only
+		return Math.sqrt(Earth.u / this.orbit.majorAxis);
+	}
+
+	public PseudoEulerAngles getPosition() throws Exception {
+		return getPosition(Time.current());
+	}
+
+	public PseudoEulerAngles getPosition(double time) throws Exception {
+		PseudoEulerAngles result = new PseudoEulerAngles(orbit.directionAngle.yRotation,
+														 orbit.directionAngle.zRotation);
+		result.rotateAlongAxis(getAngularVelocity() * time, orbit.normalVector);
+		return result;
+	}
 }
