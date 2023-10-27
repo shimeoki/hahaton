@@ -79,7 +79,7 @@ form {
     overflow: hidden;
 }
 
-form{
+.content form{
     position: absolute;
     z-index: 1000;
     background-color: #fff;
@@ -89,7 +89,7 @@ form{
     width:275px;
 }
 
-input{
+.content input{
     margin: 0 30px;
     border-bottom: 3px solid #000;
     border-top: none;
@@ -99,17 +99,17 @@ input{
     font-size: 19.5px;
 }
 
-input[type = "submit"] {
+.content input[type = "submit"] {
     margin: 20px 30px;
     background-color: #6369d1;
     border: none;
     font-size: 25px;
     height: 60px;
-    border-radius: 0 45px 0 45px;
-
+    border-radius: 45px 0 45px 0;
+    cursor: pointer;
 }
 
-label {
+.content label {
     margin: 20px 30px 0 30px;
     font-size: 25px;
 }
@@ -125,7 +125,7 @@ label {
 }
 .profile svg{
     margin-top: 5px;
-    transform: scale(0.7);
+    transform: scale(0.7) ;
 }
 
 .login-signup{
@@ -135,9 +135,10 @@ label {
     top: -400px;
     right: 0;
     z-index: 10000;
-    transition: top 0.5s;
+    transition: top 0.5s cubic-bezier(0.51, 0.02, 0.35, 0.99);
     display: flex;
-
+    flex-direction: column;
+    border-radius: 0 0 0 45px;
 }
 
 .login-signup.shown {
@@ -148,13 +149,65 @@ label {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    margin: 5px 0;
+    margin: 0 0 34px 0;
 }
 .selection span{
-    display: inline-block;
+    display: block;
     cursor: pointer;
+    transition: all 20ms;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px;
+    background-color: #6369d1;
+    padding: 5px;
 }
-.selection .selected {
-    border-bottom: #0F7173 3px solid;
 
+.selection .selected {
+    background-color: #fff;
+}
+
+.selection span:hover {
+    background-color: #0F7173;
+}
+
+.login-signup form{
+    border-radius: 0 0 20px 0;
+    width: 100%;
+    font-size: 25px;
+}
+
+.login-signup input{
+    width: 80%;
+    margin: 0 30px 10px 30px;
+    border-bottom: 3px solid #000;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-family: 'Russo One';
+    font-size: 19.5px;
+}
+
+.login-signup label{
+    margin: 0 30px;
+}
+
+.login-signup input[type = "submit"] {
+    margin: 20px 30px;
+    background-color: #6369d1;
+    border: none;
+    font-size: 25px;
+    height: 60px;
+    border-radius: 0 45px 0 45px;
+    cursor: pointer;
+
+}
+
+.logo{
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    z-index: 10000000;
+    top: 5px;
+    left: calc(50% - 37px);
 }
