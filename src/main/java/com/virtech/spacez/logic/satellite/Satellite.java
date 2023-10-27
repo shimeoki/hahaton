@@ -1,6 +1,4 @@
 package com.virtech.spacez.logic.satellite;
-
-import com.sun.org.apache.xpath.internal.operations.Or;
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
 import com.virtech.spacez.logic.angle.Vector3;
 
