@@ -135,5 +135,9 @@ label {
     position: absolute;
     top: -400px;
     right: 0;
-    z-index: 100;
+    z-index: 10000;
+}
+
+.shown {
+    top: 0px;
 }
