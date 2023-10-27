@@ -1,4 +1,4 @@
-package com.virtech.spacez.logic;
+package com.virtech.spacez.logic.angle;
 
 public class Matrix {
 	public final double[][] matrix;
