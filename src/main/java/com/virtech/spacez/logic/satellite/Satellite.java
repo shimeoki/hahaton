@@ -2,7 +2,9 @@ package com.virtech.spacez.logic.satellite;
 
 
 import com.virtech.spacez.logic.Time;
+import com.virtech.spacez.logic.angle.Coordinates;
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
+import com.virtech.spacez.logic.angle.Vector3;
 
 public class Satellite {
 	public final int id;
@@ -38,5 +40,15 @@ public class Satellite {
 														 orbit.directionAngle.zRotation);
 		result.rotateAlongAxis(getAngularVelocity() * time, orbit.normalVector);
 		return result;
+	}
+
+	public Coordinates positionInEarthCoordinates() throws Exception{
+		return positionInEarthCoordinates(Time.current());
+	}
+
+	public Coordinates positionInEarthCoordinates(double time) throws Exception {
+		PseudoEulerAngles absolute = getPosition(time);
+		absolute.rotateAlongAxis(-Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
+		return absolute.coordinates();
 	}
 }
