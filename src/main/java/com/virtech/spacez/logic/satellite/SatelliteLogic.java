@@ -1,6 +1,8 @@
 package com.virtech.spacez.logic.satellite;
 
+import com.virtech.spacez.logic.Time;
 import com.virtech.spacez.logic.angle.Coordinates;
+import com.virtech.spacez.logic.angle.PseudoEulerAngles;
 
 import java.util.Vector;
 
@@ -18,15 +20,19 @@ public class SatelliteLogic {
 	}
 
 	static Satellite whatSatelliteCanTakePhoto(double latitude, double longitude) throws Exception{
-		Satellite dummy = new Satellite(0);
-		for (Satellite satellite : satellites) {
-			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
-				Coordinates coords = satellite.currentPositionAngle.coordinates();
-				boolean correctLatitude = coords.latitude == latitude;
-				boolean correctLongitude = coords.longitude + Earth.currentRotation.coordinates().longitude == latitude;
+
+		for (int i = (int)Time.current(); i < 43200; i++) {
+			for (Satellite satellite : satellites) {
+				if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
+					Coordinates coords = satellite.positionInEarthCoordinates();
+					double seeRadius = satellite.orbit.majorAxis * Math.tan(satellite.fovAngle);
+
+
+					boolean correctLatitude = coords.latitude == latitude;
+					boolean correctLongitude = coords.longitude + Earth.getRotation().coordinates().longitude == latitude;
+				}
 			}
 		}
-		return dummy;
 	}
 
 	//private static
