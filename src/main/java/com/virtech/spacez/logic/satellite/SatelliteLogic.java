@@ -19,9 +19,9 @@ public class SatelliteLogic {
 		}
 	}
 	//static Satellite whatSatelliteCanTakePhoto(double latitude, double longitude)
-	{
-
-	}
+//	{
+//
+//	}
 
 	//private static
 }
