@@ -20,18 +20,19 @@ public class SatelliteLogic {
 	}
 
 	static Satellite whatSatelliteCanTakePhoto(double latitude, double longitude) throws Exception{
-//		for (Satellite satellite : satellites) {
-//			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
-//				Coordinates coords = satellite.currentPositionAngle.coordinates();
-//				boolean correctLatitude = coords.latitude == latitude;
-//				boolean correctLongitude = coords.longitude + Earth.getRotation().coordinates().longitude == latitude;
-//			}
-//		}
-		Orbit testOrbit = new Orbit(1085, 1085, new PseudoEulerAngles(63.36, 3.5));
-		Satellite dummy = new Satellite(0, testOrbit,  new PseudoEulerAngles(Math.PI, 0), true, 0);//		Coordinates coords = dummy.currentPositionAngle.coordinates();
-//		boolean correctLatitude = coords.latitude == latitude;
-//		boolean correctLongitude = coords.longitude + Earth.getRotation().coordinates().longitude == latitude;
-		return dummy;
+
+		for (int i = (int)Time.current(); i < 43200; i++) {
+			for (Satellite satellite : satellites) {
+				if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
+					Coordinates coords = satellite.positionInEarthCoordinates();
+					double seeRadius = satellite.orbit.majorAxis * Math.tan(satellite.fovAngle);
+
+
+					boolean correctLatitude = coords.latitude == latitude;
+					boolean correctLongitude = coords.longitude + Earth.getRotation().coordinates().longitude == latitude;
+				}
+			}
+		}
 	}
 
 	//private static
