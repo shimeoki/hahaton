@@ -29,10 +29,10 @@ $("#radius").on("change keyup paste click", function(){
 })
 
 $(".profile").on("click", function(){
-    if($("login-signup").hasClass("sho")) {
-        $(".login-signup").css("top", "-400px")
+    if($("login-signup").hasClass("shown")) {
+        $(".login-signup").removeClass("shown")
     } else {
-        $(".login-signup").css("top", "0px")
+        $(".login-signup").addClass("shown")
     }
 })
 
