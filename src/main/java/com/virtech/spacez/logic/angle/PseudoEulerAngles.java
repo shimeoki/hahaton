@@ -10,10 +10,15 @@ public class PseudoEulerAngles {
 		this.zRotation = zRotation;
 	}
 
+	public PseudoEulerAngles(Coordinates coordinates) {
+		this.yRotation = coordinates.latitude / 180 * Math.PI;
+		this.zRotation = coordinates.longitude / 180 * Math.PI;
+	}
+
 	public PseudoEulerAngles(Vector3 vector) {
 		Vector3 norm = vector.normalized();
 		yRotation = Math.asin(norm.z());
-		zRotation = Math.asin(norm.y());
+		zRotation = Math.acos(norm.y());
 	}
 
 	public void rotateAlongAxis(double angle, Vector3 axis) throws Exception {
