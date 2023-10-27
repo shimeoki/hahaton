@@ -10,10 +10,11 @@ public class Orbit {
 
     public Vector3 normalVector;
 
-    public Orbit(double majorAxis, double minorAxis) throws Exception {
+    public Orbit(double majorAxis, double minorAxis, PseudoEulerAngles directionAngle) throws Exception {
+        this.directionAngle = directionAngle;
         this.normalVector = directionAngle.toVector3(0, 0, 1);
-        this.majorAxis = majorAxis;
-        this.minorAxis = minorAxis;
+        this.majorAxis = majorAxis + Earth.R;
+        this.minorAxis = minorAxis + Earth.R;
     }
 
 
