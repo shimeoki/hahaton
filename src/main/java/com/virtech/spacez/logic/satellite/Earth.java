@@ -21,4 +21,8 @@ public class Earth {
 	public static void updateRotation() throws Exception {
 		currentRotation.rotateAlongAxis(angularVelocity * System.currentTimeMillis(), new Vector3(0, 0, 1));
 	}
+
+	public static PseudoEulerAngles calculateRotation(long time) {
+		return new PseudoEulerAngles(0, angularVelocity * time % 360);
+	}
 }

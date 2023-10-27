@@ -2,12 +2,11 @@ package com.virtech.spacez.logic.satellite;
 
 
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
-import com.virtech.spacez.logic.angle.Vector3;
 
 public class Satellite {
-    public final int id;
-    public PseudoEulerAngles currentPositionAngle;
-    public PseudoEulerAngles startPositionAngle;
+	public final int id;
+	public PseudoEulerAngles currentPositionAngle;
+	public PseudoEulerAngles startPositionAngle;
 
     // In angles per minute
     public double currentAngularSpeed;
@@ -27,16 +26,9 @@ public class Satellite {
 
         this.currentAngularSpeed = Math.sqrt(Earth.getEarthGravAccel() / this.orbit.majorAxis);
     }
-    public Satellite() throws Exception{
-//        Satellite(0, new PseudoEulerAngles(0, 0), true, 0, new Orbit(0, 0));
+    public Satellite(int id) throws Exception{
+        this.id = id;
+        new Satellite(0, new PseudoEulerAngles(0, 0), true, 0, new Orbit(0, 0));
     }
-
-    public void updateRotation(double dTime) throws Exception {
-        this.currentPositionAngle.rotateAlongAxis(this.currentAngularSpeed * dTime, orbit.normalVector);
-    }
-
-    public void canSeeArea(Vector3 point, double radius) throws Exception {
-        Vector3 distance = this.currentPositionAngle.toVector3(1, 1, 1).subtract(point);
-        System.out.println(distance);
-    }
+	// In angles per minute
 }

@@ -1,7 +1,6 @@
 package com.virtech.spacez.logic.satellite;
 
 import com.virtech.spacez.logic.angle.Coordinates;
-import org.hibernate.type.descriptor.java.MutabilityPlanExposer;
 
 import java.util.Vector;
 
@@ -19,7 +18,7 @@ public class SatelliteLogic {
 	}
 
 	static Satellite whatSatelliteCanTakePhoto(double latitude, double longitude) throws Exception{
-		Satellite dummy = new Satellite();
+		Satellite dummy = new Satellite(0);
 		for (Satellite satellite : satellites) {
 			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
 				Coordinates coords = satellite.currentPositionAngle.coordinates();
