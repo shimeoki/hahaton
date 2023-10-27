@@ -13,7 +13,7 @@ import com.virtech.spacez.entities.User;
 import com.virtech.spacez.repositories.UserRepository;
 
 @Controller
-@RequestMapping(path = "/api")
+@RequestMapping("/api")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
