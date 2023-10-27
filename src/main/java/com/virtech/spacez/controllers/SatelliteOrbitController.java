@@ -3,9 +3,11 @@ package com.virtech.spacez.controllers;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,5 +41,17 @@ public class SatelliteOrbitController {
     @GetMapping("/api/satellite-orbits/{id}")
     public SatelliteOrbit one(@PathVariable int id) {
         return service.getById(id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/api/satellite-orbits/{id}")
+    public void deleteById(@PathVariable int id) {
+        service.deleteById(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/api/satellite-orbits/{id}")
+    public void updateById(@RequestBody SatelliteOrbit satelliteOrbit, @PathVariable int id) {
+        service.updateById(satelliteOrbit, id);
     }
 }

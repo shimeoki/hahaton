@@ -28,7 +28,15 @@ public class RoleService {
         return repository.save(role);
     }
 
-    public void delete(int id) {
+    public void deleteById(int id) {
         repository.deleteById(id);
+    }
+
+    public Role updateById(Role updatedRole, int id) {
+        Role role = getById(id);
+
+        role.setName(updatedRole.getName());
+        
+        return repository.save(role);
     }
 }

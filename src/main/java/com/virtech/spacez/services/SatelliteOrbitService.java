@@ -27,4 +27,19 @@ public class SatelliteOrbitService {
     public SatelliteOrbit create(SatelliteOrbit satelliteOrbit) {
         return repository.save(satelliteOrbit);
     }
+
+    public void deleteById(int id) {
+        repository.deleteById(id);
+    }
+
+    public SatelliteOrbit updateById(SatelliteOrbit updatedSatelliteOrbit, int id) {
+        SatelliteOrbit satelliteOrbit = getById(id);
+
+        satelliteOrbit.setHorizontalAngle(updatedSatelliteOrbit.getHorizontalAngle());
+        satelliteOrbit.setVerticalAngle(updatedSatelliteOrbit.getVerticalAngle());
+        satelliteOrbit.setSemiMajorAxis(updatedSatelliteOrbit.getSemiMajorAxis());
+        satelliteOrbit.setSemiMinorAxis(updatedSatelliteOrbit.getSemiMinorAxis());
+
+        return repository.save(satelliteOrbit);
+    }
 }
