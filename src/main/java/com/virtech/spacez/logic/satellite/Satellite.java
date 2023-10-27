@@ -24,7 +24,7 @@ public class Satellite {
         this.orbit = orbit;
         // Пока что орбита круговая
 
-        this.currentAngularSpeed = Math.sqrt(Earth.getEarthGravAccel() / this.orbit.majorAxis);
+        this.currentAngularSpeed = Math.sqrt(Earth.u / this.orbit.majorAxis);
     }
     public Satellite(int id) throws Exception{
         this.id = id;
