@@ -1,3 +1,6 @@
+
+
+console.log(23)
 var view_icon = `
 <div style = "width: 75px; height: 75px;">
 <?xml version="1.0" encoding="utf-8"?>
@@ -35,8 +38,9 @@ var order_text = "Заказ"
 
 var order_selected = true
 
-$(".view,.order"). on("click", function(){
+$(".view,.order").on("click", function(){
     var text = $(this).html()
+    console.log(123)
     if (text.length > 20) {
         if(order_selected){
             $(this).html(view_text)
@@ -82,3 +86,4 @@ $(".selection span").on("click", function(){
   
   
 })
+
