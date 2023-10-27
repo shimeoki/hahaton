@@ -12,7 +12,11 @@ public class Earth {
 	private static final double Period = 86164.090530833;
 	public static double angularVelocity = 2 * Math.PI / Period;
 
-	public static PseudoEulerAngles getRotation(long time) throws Exception {
-		return new PseudoEulerAngles(0, angularVelocity * Time.current());
+	public static PseudoEulerAngles getRotation() throws Exception {
+		return getRotation(Time.current());
+	}
+
+	public static PseudoEulerAngles getRotation(double time) throws Exception {
+		return new PseudoEulerAngles(0, angularVelocity * time);
 	}
 }

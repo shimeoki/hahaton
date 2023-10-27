@@ -1,5 +1,6 @@
 package com.virtech.spacez.logic.satellite;
 
+import com.virtech.spacez.logic.Time;
 import com.virtech.spacez.logic.angle.Coordinates;
 
 import java.util.Vector;
@@ -23,7 +24,7 @@ public class SatelliteLogic {
 			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
 				Coordinates coords = satellite.currentPositionAngle.coordinates();
 				boolean correctLatitude = coords.latitude == latitude;
-				boolean correctLongitude = coords.longitude + Earth.currentRotation.coordinates().longitude == latitude;
+				boolean correctLongitude = coords.longitude + Earth.getRotation().coordinates().longitude == latitude;
 			}
 		}
 		return dummy;

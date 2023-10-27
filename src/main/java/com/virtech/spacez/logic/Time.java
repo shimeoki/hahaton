@@ -6,4 +6,7 @@ public class Time {
 	static public double current() {
 		return System.currentTimeMillis() / millisToSeconds;
 	}
+	static public double fromNow(double delaySeconds) {
+		return current() + delaySeconds;
+	}
 }
