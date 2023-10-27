@@ -10,10 +10,15 @@ public class PseudoEulerAngles {
 		this.zRotation = zRotation;
 	}
 
+	public PseudoEulerAngles(Coordinates coordinates) {
+		this.yRotation = coordinates.latitude / 180 * Math.PI;
+		this.zRotation = coordinates.longitude / 180 * Math.PI;
+	}
+
 	public PseudoEulerAngles(Vector3 vector) {
 		Vector3 norm = vector.normalized();
 		yRotation = Math.asin(norm.z());
-		zRotation = Math.asin(norm.y());
+		zRotation = Math.acos(norm.y());
 	}
 
 	public void rotateAlongAxis(double angle, Vector3 axis) throws Exception {
@@ -46,6 +51,10 @@ public class PseudoEulerAngles {
 		zRotation = result.zRotation;
 	}
 
+	public Vector3 toVector3() throws Exception {
+		return toVector3(1, 0, 0);
+	}
+
 	public Vector3 toVector3(double x, double y, double z) throws Exception {
 		Matrix result = new Matrix(new double[][]{new double[]{x, y, z}});
 
@@ -64,10 +73,6 @@ public class PseudoEulerAngles {
 				}));
 
 		return new Vector3(result.matrix[0][0], result.matrix[0][1], result.matrix[0][2]);
-	}
-
-	public Vector3 toVector3() throws Exception {
-		return toVector3(1, 0, 0);
 	}
 
 	public Coordinates coordinates() {
