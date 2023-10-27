@@ -140,4 +140,5 @@ label {
 
 .shown {
     top: 0px;
+    color: red;
 }
