@@ -47,7 +47,7 @@ h1 {
 .view {
     width: 75px;
     text-align: center;
-    background: #0F7173;
+    background: #6369d1;
 }
 
 svg {
@@ -60,7 +60,7 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #6369d1;
+    background: #0F7173;
     font-family: 'Russo One';
     font-size: 37px;
     text-shadow: 0 3px 3px rgb(0 0 0 /0.4);
@@ -109,6 +109,11 @@ form {
     cursor: pointer;
 }
 
+.content input[type = "submit"]:hover{
+    color: white;
+    background-color: #0F7173;
+}
+
 .content label {
     margin: 20px 30px 0 30px;
     font-size: 25px;
@@ -132,7 +137,7 @@ form {
     width: 300px;
     background: white;
     position: absolute;
-    top: -400px;
+    top: -700px;
     right: 0;
     z-index: 10000;
     transition: top 0.5s cubic-bezier(0.51, 0.02, 0.35, 0.99);
@@ -158,9 +163,8 @@ form {
     width: 100%;
     text-align: center;
     font-size: 20px;
-    padding: 5px;
     background-color: #6369d1;
-    padding: 5px;
+    padding: 10px;
 }
 
 .selection .selected {
@@ -200,14 +204,23 @@ form {
     height: 60px;
     border-radius: 0 45px 0 45px;
     cursor: pointer;
+    transition: all 100ms;
+}
 
+.login-signup input[type = "submit"]:hover{
+    color: white;
+    background-color: #0F7173;
 }
 
 .logo{
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     position: absolute;
     z-index: 10000000;
-    top: 5px;
+    top: 10px;
     left: calc(50% - 37px);
+}
+
+.login-signup .hidden {
+    display: none;
 }

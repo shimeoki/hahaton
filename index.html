@@ -79,14 +79,34 @@
             <span class = "login-select selected">Вход</span>
             <span class = "signup-select">Регистрация</span>
         </div>
-        <form action="POST">
-            <label for="login">Логин</label>
+
+        <form action="POST" name = "login" >
+            <label for="login">Почта</label>
             <input type="text" name="latitude" id="login" value = "">
 
             <label for="password">Пароль</label>
             <input type="text" name="latitude" id="password" value = "">
 
-            <input type="submit" value="Вход" method = "POST">
+            <input type="submit" value="Вход">
+        </form>
+
+        <form action="POST" name = "register" class = "hidden">
+            <label for="login">Фамилия</label>
+            <input type="text" name="latitude" id="login" value = "">
+
+            <label for="login">Имя</label>
+            <input type="text" name="latitude" id="login" value = "">
+
+            <label for="login">Почта</label>
+            <input type="text" name="latitude" id="login" value = "">
+
+            <label for="password">Придумайте пароль</label>
+            <input type="text" name="latitude" id="password" value = "">
+
+            <label for="password">Повторите пароль</label>
+            <input type="text" name="latitude" id="password" value = "">
+
+            <input type="submit" value="Регистрация">
         </form>
     </div>
 
