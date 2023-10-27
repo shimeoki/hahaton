@@ -27,6 +27,15 @@ $("#longitude").on("change keyup paste click", function(){
 $("#radius").on("change keyup paste click", function(){
     change()
 })
+
+$(".profile").on("click", function(){
+    if($("login-signup").hasClass("sho")) {
+        $(".login-signup").css("top", "-400px")
+    } else {
+        $(".login-signup").css("top", "0px")
+    }
+})
+
 function change() {
         if (latitudeInput.value == "") {
             lastLatitudeValue = 0
