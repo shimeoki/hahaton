@@ -1,6 +1,6 @@
 package com.virtech.spacez.logic.satellite;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
+
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
 import com.virtech.spacez.logic.angle.Vector3;
 
@@ -14,19 +14,19 @@ public class Satellite {
     public double fovAngle;
     public Orbit orbit;
 
-    public Satellite(PseudoEulerAngles startPositionAngle, double currentAngularSpeed, double fovAngle, int id){
+    public Satellite(int id, PseudoEulerAngles startPositionAngle, double currentAngularSpeed,
+                     double fovAngle, Orbit orbit) {
         this.startPositionAngle = startPositionAngle;
         this.currentAngularSpeed = currentAngularSpeed;
         this.fovAngle = fovAngle;
         this.id = id;
+        this.orbit = orbit;
     }
 
-    public void updateRotation(double dTime){
-        PseudoEulerAngles dAngle = new PseudoEulerAngles(this.currentAngularSpeed * dTime, 0);
-//        this.currentPositionAngle.rotateAlongAxis(dAngle, new Vector3());
-
-        this.currentPositionAngle.yRotation += dAngle.yRotation;
+    public void updateRotation(double dTime) throws Exception {
+        this.currentPositionAngle.rotateAlongAxis(this.currentAngularSpeed * dTime, orbit.normalVector);
     }
+
     public void canSeeArea(Vector3 point, double radius) throws Exception {
         Vector3 distance = this.currentPositionAngle.toVector3(1, 1, 1).subtract(point);
         System.out.println(distance);
