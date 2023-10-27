@@ -1,5 +1,6 @@
 var map = L.map('map').setView([0, 90], 4); // Replace the coordinates and zoom level
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  map.zoomControl.setPosition('bottomright');
 var latitudeInput = document.getElementById("latitude");
 var longitudeInput = document.getElementById("longitude");
 var radiusInput = document.getElementById("radius");
@@ -10,7 +11,7 @@ var lastRadiusValue = 0;
 var circle = L.circle([lastLatitudeValue, lastLongitudeValue], {
     color: 'red',    // Circle border color
     fillColor: 'blue', // Circle fill color
-    fillOpacity: 0.5, // Opacity of the fill
+    fillOpacity: 0.3, // Opacity of the fill
     radius: 0      // Radius of the circle in meters
 }).addTo(map);
 
@@ -26,6 +27,8 @@ $("#longitude").on("change keyup paste click", function(){
 $("#radius").on("change keyup paste click", function(){
     change()
 })
+
+
 function change() {
         if (latitudeInput.value == "") {
             lastLatitudeValue = 0
