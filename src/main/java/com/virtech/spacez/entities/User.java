@@ -13,10 +13,12 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
+
+    // table columns
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -34,11 +36,23 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    public Integer getId() {
+    // constructors
+    public User() {}
+
+    public User(String name, String surname, String login, String passwordBcrypt, Role role) {
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.passwordBcrypt = passwordBcrypt;
+        this.role = role;
+    }
+
+    // getters/setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
