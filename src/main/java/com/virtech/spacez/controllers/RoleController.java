@@ -1,39 +1,50 @@
 package com.virtech.spacez.controllers;
 
-
-import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.virtech.spacez.entities.Role;
-import com.virtech.spacez.repositories.RoleRepository;
+import com.virtech.spacez.services.RoleService;
 
 
-@Controller
-@RequestMapping("/api")
+@RestController
 public class RoleController {
-    @Autowired
-    private RoleRepository roleRepository;
 
-    @PostMapping("/role")
-    public ResponseEntity<Role> createRole(@RequestBody Role role) {
-        Role newRole = new Role(role.getName());
-        roleRepository.save(newRole);
-        return new ResponseEntity<>(newRole, HttpStatus.CREATED);
+    private final RoleService service;
+
+    public RoleController(RoleService service) {
+        this.service = service;
     }
 
-    @GetMapping("/role")
-    public ResponseEntity<List<Role>> readRoles() {
-        List<Role> roles = new ArrayList<Role>();
-        roleRepository.findAll().forEach(roles::add);
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/api/roles")
+    public Role create(@RequestBody Role role) {
+        return service.create(role);
+    }
 
-        return new ResponseEntity<>(roles, HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/api/roles")
+    public List<Role> all() {
+        return service.getAll();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/api/roles/{id}")
+    public Role one(@PathVariable int id) {
+        return service.getById(id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/api/roles/{id}")
+    public void deleteById(@PathVariable int id) {
+        service.delete(id);
     }
 }

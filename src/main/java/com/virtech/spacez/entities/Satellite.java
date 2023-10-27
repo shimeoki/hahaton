@@ -1,5 +1,7 @@
 package com.virtech.spacez.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,51 +18,39 @@ public class Satellite {
 
     // table columns
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "direction_clockwise")
-    private Boolean directionClockwise;
+    private boolean directionClockwise;
 
     @Column(name = "fov")
-    private Integer fov;
+    private int fov;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "satellite_orbit_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private SatelliteOrbit satelliteOrbit;
 
-    // constructors
-    public Satellite() {}
-
-    public Satellite(Boolean directionClockwise, Integer fov, SatelliteOrbit satelliteOrbit) {
-        this.directionClockwise = directionClockwise;
-        this.fov = fov;
-        this.satelliteOrbit = satelliteOrbit;
-    }
-
     // getters/setters
-    public Long getId() {
+    public int getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Boolean getIsDirectionClockwise() {
+    
+    public boolean getDirectionClockwise() {
         return directionClockwise;
     }
 
-    public void setIsDirectionClockwise(Boolean directionClockwise) {
+    public void setDirectionClockwise(boolean directionClockwise) {
         this.directionClockwise = directionClockwise;
     }
 
-    public Integer getFov() {
+    public int getFov() {
         return fov;
     }
 
-    public void setFov(Integer fov) {
+    public void setFov(int fov) {
         this.fov = fov;
     }
 

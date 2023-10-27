@@ -1,5 +1,7 @@
 package com.virtech.spacez.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,9 +18,9 @@ public class User {
 
     // table columns
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -34,26 +36,12 @@ public class User {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Role role;
 
-    // constructors
-    public User() {}
-
-    public User(String name, String surname, String login, String passwordBcrypt, Role role) {
-        this.name = name;
-        this.surname = surname;
-        this.login = login;
-        this.passwordBcrypt = passwordBcrypt;
-        this.role = role;
-    }
-
     // getters/setters
-    public Long getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

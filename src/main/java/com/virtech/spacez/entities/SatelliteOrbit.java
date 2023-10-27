@@ -12,64 +12,59 @@ import jakarta.persistence.Table;
 public class SatelliteOrbit {
     
     // table columns
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "horizontal_angle")
-    private Double horizontalAngle;
+    private double horizontalAngle;
 
     @Column(name = "vertical_angle")
-    private Double verticalAngle;
+    private double verticalAngle;
 
     @Column(name = "semi_major_axis")
-    private Double semiMajorAxis;
+    private double semiMajorAxis;
 
     @Column(name = "semi_minor_axis")
-    private Double semiMinorAxis;
-
-    // constructors
-    public SatelliteOrbit() {}
-
-    public SatelliteOrbit(Double horizontalAngle, Double verticalAngle, Double semiMajorAxis, Double semiMinorAxis) {
-        this.horizontalAngle = horizontalAngle;
-        this.verticalAngle = verticalAngle;
-        this.semiMajorAxis = semiMajorAxis;
-        this.semiMinorAxis = semiMinorAxis;
-    }
+    private double semiMinorAxis;
 
     // getters/setters
-
-    public Double getHorizontalAngle() {
+    
+    public int getId() {
+        return id;
+    }
+    
+    public double getHorizontalAngle() {
         return horizontalAngle;
     }
 
-    public void setHorizontalAngle(Double horizontalAngle) {
+    public void setHorizontalAngle(double horizontalAngle) {
         this.horizontalAngle = horizontalAngle;
     }
 
-    public Double getVerticalAngle() {
+    public double getVerticalAngle() {
         return verticalAngle;
     }
 
-    public void setVerticalAngle(Double verticalAngle) {
+    public void setVerticalAngle(double verticalAngle) {
         this.verticalAngle = verticalAngle;
     }
 
-    public Double getSemiMajorAxis() {
+    public double getSemiMajorAxis() {
         return semiMajorAxis;
     }
 
-    public void setSemiMajorAxis(Double semiMajorAxis) {
+    public void setSemiMajorAxis(double semiMajorAxis) {
         this.semiMajorAxis = semiMajorAxis;
     }
 
-    public Double getSemiMinorAxis() {
+    public double getSemiMinorAxis() {
         return semiMinorAxis;
     }
 
-    public void setSemiMinorAxis(Double semiMinorAxis) {
+    public void setSemiMinorAxis(double semiMinorAxis) {
         this.semiMinorAxis = semiMinorAxis;
     }
 }
