@@ -36,16 +36,18 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    // // constructors
-    // public User() {}
+    // constructors
+    public User() {}
 
-    // public User(String name, String surname, String login, String passwordBcrypt, Long role_id) {
-    //     this.name = name;
-    //     this.surname = surname;
-    //     this.login = login;
-    //     this.passwordBcrypt = passwordBcrypt;
-    // }
+    public User(String name, String surname, String login, String passwordBcrypt, Role role) {
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.passwordBcrypt = passwordBcrypt;
+        this.role = role;
+    }
 
+    // getters/setters
     public Long getId() {
         return id;
     }

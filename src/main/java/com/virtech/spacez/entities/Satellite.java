@@ -30,6 +30,16 @@ public class Satellite {
     @JoinColumn(name = "satellite_orbit_id")
     private SatelliteOrbit satelliteOrbit;
 
+    // constructors
+    public Satellite() {}
+
+    public Satellite(Boolean directionClockwise, Integer fov, SatelliteOrbit satelliteOrbit) {
+        this.directionClockwise = directionClockwise;
+        this.fov = fov;
+        this.satelliteOrbit = satelliteOrbit;
+    }
+
+    // getters/setters
     public Long getId() {
         return id;
     }
