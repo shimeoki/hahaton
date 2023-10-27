@@ -28,13 +28,6 @@ $("#radius").on("change keyup paste click", function(){
     change()
 })
 
-$(".profile").on("click", function(){
-    if($("login-signup").hasClass("shown")) {
-        $(".login-signup").removeClass("shown")
-    } else {
-        $(".login-signup").addClass("shown")
-    }
-})
 
 function change() {
         if (latitudeInput.value == "") {

@@ -28,12 +28,12 @@ textarea:focus, input:focus{
 }
 
 header {
-    border-bottom: 1px solid #ccc;
+    box-shadow: 0 4px 4px rgb(0 0 0 /0.4);
     display: flex;
     height: 75px;
     background: black;
     position: relative;
-    z-index: 1000;
+    z-index: 100000;
 }
 
 
@@ -130,14 +130,25 @@ label {
 
 .login-signup{
     width: 300px;
-    height: 300px;
-    background: #333;
+    background: white;
     position: absolute;
     top: -400px;
     right: 0;
     z-index: 10000;
+    transition: top 0.5s;
+    display: flex;
+
 }
 
-.shown {
-    top: 0px;
+.login-signup.shown {
+    top: 75px;
+}
+
+.selection{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.selection span{
+    display: inline-block;
 }
