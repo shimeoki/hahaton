@@ -15,6 +15,7 @@ public class Satellite {
     public double fovAngle;
     public Orbit orbit;
 
+
     public Satellite(int id, PseudoEulerAngles startPositionAngle, boolean clockwiseRotation,
                      double fovAngle, Orbit orbit) {
         this.startPositionAngle = startPositionAngle;
@@ -25,6 +26,9 @@ public class Satellite {
         // Пока что орбита круговая
 
         this.currentAngularSpeed = Math.sqrt(Earth.getEarthGravAccel() / this.orbit.majorAxis);
+    }
+    public Satellite() throws Exception{
+//        Satellite(0, new PseudoEulerAngles(0, 0), true, 0, new Orbit(0, 0));
     }
 
     public void updateRotation(double dTime) throws Exception {

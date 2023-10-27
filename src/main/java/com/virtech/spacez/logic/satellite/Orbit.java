@@ -8,7 +8,7 @@ public class Orbit {
     public double majorAxis;
     public double minorAxis;
 
-    public Vector3 normalVector = new Vector3(0, 0, 0);
+    public Vector3 normalVector;
 
     public Orbit(double majorAxis, double minorAxis) throws Exception {
         this.normalVector = directionAngle.toVector3(0, 0, 1);

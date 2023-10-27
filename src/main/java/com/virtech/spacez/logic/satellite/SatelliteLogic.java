@@ -1,5 +1,8 @@
 package com.virtech.spacez.logic.satellite;
 
+import com.virtech.spacez.logic.angle.Coordinates;
+import org.hibernate.type.descriptor.java.MutabilityPlanExposer;
+
 import java.util.Vector;
 
 public class SatelliteLogic {
@@ -15,13 +18,17 @@ public class SatelliteLogic {
 		satellites.remove(satellite);
 	}
 
-//	static Satellite whatSatelliteCanTakePhoto(double latitude, double longitude) {
-//		for (Satellite satellite : satellites) {
-//			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
-//
-//			}
-//		}
-//	}
+	static Satellite whatSatelliteCanTakePhoto(double latitude, double longitude) throws Exception{
+		Satellite dummy = new Satellite();
+		for (Satellite satellite : satellites) {
+			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
+				Coordinates coords = satellite.currentPositionAngle.coordinates();
+				boolean correctLatitude = coords.latitude == latitude;
+				boolean correctLongitude = coords.longitude + Earth.currentRotation.coordinates().longitude == latitude;
+			}
+		}
+		return dummy;
+	}
 
 	//private static
 }
