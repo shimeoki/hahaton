@@ -63,13 +63,13 @@ $(".profile").on("click", function(){
     }
 })
 
+
 var login_selected = true;
 
 $(".selection span").on("click", function(){
     if(!$(this).hasClass("selected")) {
         $(".selection span").removeClass("selected")
         $(this).addClass("selected")
-
         $(".login-signup form").removeClass("hidden")
         if(login_selected) {
             $(".login-signup form:nth-child(2)").addClass("hidden")
@@ -79,6 +79,6 @@ $(".selection span").on("click", function(){
         login_selected = !login_selected
         console.log(login_selected)
     }
-
-    
+  
+  
 })
