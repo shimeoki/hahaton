@@ -36,13 +36,19 @@ public class Satellite {
 	}
 
 	public PseudoEulerAngles getPosition(double time) throws Exception {
+		int sign;
+		if (clockwiseRotation) {
+			sign = 1;
+		} else {
+			sign = -1;
+		}
 		PseudoEulerAngles result = new PseudoEulerAngles(orbit.directionAngle.yRotation,
 														 orbit.directionAngle.zRotation);
-		result.rotateAlongAxis(getAngularVelocity() * time, orbit.normalVector);
+		result.rotateAlongAxis(sign * getAngularVelocity() * time, orbit.normalVector);
 		return result;
 	}
 
-	public Coordinates positionInEarthCoordinates() throws Exception{
+	public Coordinates positionInEarthCoordinates() throws Exception {
 		return positionInEarthCoordinates(Time.current());
 	}
 
