@@ -91,7 +91,6 @@ $(".selection span").on("click", function(){
 })
 
 
-
 $("#add").on("click", ()=>{
     var satelite = document.createElement("div")
     satelite.classList.add("satelite");
@@ -102,25 +101,29 @@ $("#add").on("click", ()=>{
         </div>
         <div class="field">
             <label for="angle1">Угол 1</label>
-            <input type="number" name="angle1" id="angle2" value = "" placeholder="40">
+            <input type="number" name="angle1" id="angle2" value = "" placeholder="40" step = "0.001">
         </div>
 
         <div class="field">
             <label for="longitude">Угол 2</label>
-            <input type="number" name="angle2" id="angle2" value = "" placeholder="70">
+            <input type="number" name="angle2" id="angle2" value = "" placeholder="70" step = "0.001">
         </div>
 
         <div class="field">
             <label for="latitude">Полуось a</label>
-            <input type="number" name="latitude" id="latitude" value = "" placeholder="2">
+            <input type="number" name="latitude" id="latitude" value = "" placeholder="2" step = "0.001">
         </div>
 
         <div class="field">
             <label for="longitude">Полуось b</label>
-            <input type="number" name="longitude" id="longitude" value = "" placeholder="3">
+            <input type="number" name="longitude" id="longitude" value = "" placeholder="3" step = "0.001">
         </div>
         <input type="button" value="Удалить">
     `
     button.after(satelite)
-    
 })
+
+$(document).on('click', '.satelite input[type="button"]', function()
+{
+    $(this).parent().remove()
+});

@@ -291,7 +291,7 @@ form {
     width: 275px;
     height: calc(100vh - 75px);
     background: white;
-    overflow:scroll
+    overflow:auto
 }
 
 #scene {
