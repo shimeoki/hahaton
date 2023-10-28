@@ -1,78 +1,60 @@
 package com.virtech.spacez.logic.satellite;
 
-import com.virtech.spacez.entities.SatelliteOrbit;
+
 import com.virtech.spacez.logic.Time;
 import com.virtech.spacez.logic.angle.Coordinates;
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
 import com.virtech.spacez.logic.angle.Vector3;
 
-import java.util.Comparator;
-import java.util.Vector;
-
 public class SatelliteLogic {
-	public static Vector<Satellite> satellites = new Vector<>();
+	public final int id;
+	public Orbit orbit;
+	public PseudoEulerAngles startPositionAngle;
+	public boolean clockwiseRotation;
+	public double fovAngle;
 
-	public static void addSatellite(Satellite satellite) {
-		if (!satellites.contains(satellite)) {
-			satellites.add(satellite);
-		}
+
+	public SatelliteLogic(int id, Orbit orbit, PseudoEulerAngles startPositionAngle, boolean clockwiseRotation, double fovAngle) {
+		this.id = id;
+		this.orbit = orbit;
+		this.startPositionAngle = startPositionAngle;
+		this.clockwiseRotation = clockwiseRotation;
+		this.fovAngle = fovAngle;
 	}
 
-	public static void removeSatellite(Satellite satellite) {
-		satellites.remove(satellite);
+	public double getAngularVelocity() {
+		return getAngularVelocity(Time.current());
 	}
 
-	static SatelliteRequest makeRequest(Coordinates coordinates, double radius) throws Exception {
-		Vector<SatelliteRequest> requests = new Vector<>();
-
-		for (int i = (int) Time.current(); i < 43200; i++) {
-			for (Satellite satellite : satellites) {
-				if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
-					for (double time = Time.current(),
-						 finish = Time.fromNow(30 * 24 * 60 * 60);
-						 time <= finish; time += 60) {
-
-						Vector3 satelliteVector = new PseudoEulerAngles(
-								satellite.positionInEarthCoordinates()).toVector3();
-						double viewRadius = getViewRadius(satellite, time);
-
-						PseudoEulerAngles customAngle = new PseudoEulerAngles(coordinates);
-						customAngle.rotateAlongAxis(Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
-						Vector3 customVector = customAngle.toVector3();
-
-						if (viewRadius >= radius + customVector.subtract(satelliteVector).length()) {
-							requests.add(new SatelliteRequest(satellite, time));
-						}
-					}
-				}
-				// else for non-round orbit
-			}
-		}
-		if (!requests.isEmpty()) {
-			Comparator<SatelliteRequest> comparator = (SatelliteRequest r1, SatelliteRequest r2) ->
-					(int) Math.round(r1.timeToTakePhoto - r2.timeToTakePhoto);
-			requests.sort(comparator);
-			return requests.elementAt(0);
-		} else {
-			return null;
-		}
-	}
-
-	private static double getViewRadius(Satellite satellite, double time) {
+	public double getAngularVelocity(double time) {
 		// Round orbit only
-		double R = satellite.orbit.majorAxis;
-		double r = Earth.R;
-		double cos = Math.cos(satellite.fovAngle / 2);
+		return Math.sqrt(Earth.u / this.orbit.majorAxis);
+	}
 
-		double D = Math.pow(2 * R * cos, 2) - 4 * (R * R - r * r);
-		if (D < 0) {
-			double k = Math.tan(satellite.fovAngle / 2 - Math.PI / 2);
-			double d = k * k + 4 * R + 4 * r * r + 1;
-			return (k - Math.sqrt(d)) / 2;
+	public PseudoEulerAngles getPosition() throws Exception {
+		return getPosition(Time.current());
+	}
 
+	public PseudoEulerAngles getPosition(double time) throws Exception {
+		int sign;
+		if (clockwiseRotation) {
+			sign = 1;
 		} else {
-			double l = (2 * R * cos - Math.sqrt(D)) / 2;
-			return l * Math.sin(satellite.fovAngle / 2);
+			sign = -1;
 		}
+		PseudoEulerAngles result = new PseudoEulerAngles(orbit.directionAngle.yRotation,
+														 orbit.directionAngle.zRotation);
+		result.rotateAlongAxis(sign * getAngularVelocity() * time, orbit.normalVector);
+		return result;
+	}
+
+	public Coordinates positionInEarthCoordinates() throws Exception {
+		return positionInEarthCoordinates(Time.current());
+	}
+
+	public Coordinates positionInEarthCoordinates(double time) throws Exception {
+		PseudoEulerAngles absolute = getPosition(time);
+		absolute.rotateAlongAxis(-Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
+		return absolute.coordinates();
 	}
 }
