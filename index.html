@@ -58,8 +58,10 @@
         </div>
 
         <div class="login">
+            <div class="user">
+                Вход<br>Регистрация
+            </div>
             <div class="profile">
-
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 821.36 912.38">
                 <defs>
@@ -72,7 +74,6 @@
                 <path class="cls-1" d="M269.62,600h282.48c148.61,0,269.26,120.65,269.26,269.26v43.12H.36v-43.12c0-148.61,120.65-269.26,269.26-269.26Z"/>
                 <circle class="cls-1" cx="410.86" cy="262.5" r="262.5"/>
                 </svg>
-
             </div>
         </div>
     </header>
@@ -83,7 +84,7 @@
             <span class = "login-select selected">Вход</span>
             <span class = "signup-select">Регистрация</span>
         </div>
-        <form action="POST" name = "login" >
+        <form name = "login" >
             <label for="login">Почта</label>
             <input type="text" name="login" id="login" value = "">
 
@@ -92,7 +93,7 @@
 
             <input type="submit" value="Вход">
         </form>
-        <form action="POST" name = "register" class = "hidden">
+        <form name = "register" class = "hidden">
             <label for="surname">Фамилия</label>
             <input type="text" name="surname" id="surname" value = "">
 
@@ -113,12 +114,12 @@
     </div>
 
     <div class="content">
-        <form action="URL">
+        <form>
             <label for="latitude">Широта*</label>
-            <input type="number" name="latitude" id="latitude" value = "" placeholder="23.34353248">
+            <input type="number" name="latitude" id="latitude" value = "" placeholder="23.34353248" step="0.0001">
 
             <label for="longitude">Долгота*</label>
-            <input type="number" name="longitude" id="longitude" value = "" placeholder="11.243324219">
+            <input type="number" name="longitude" id="longitude" value = "" placeholder="11.243324219" step="0.0001">
 
             <label for="radius">Радиус*</label>
             <input type="number" name="radius" id="radius" placeholder="12000 (в метрах)">
@@ -130,8 +131,38 @@
     </div>
 
     <div class="satelites hidden" >
+        <div class="sidebar">
+            <input type="button" value="Добавить" id = "add">
+            <div class="satelite">
+                <div class="field">
+                    <label for="name">Название</label>
+                    <input type="text" name="angle1" id="angle2" value = "" placeholder="Спутник V">
+                </div>
+                <div class="field">
+                    <label for="angle1">Угол 1</label>
+                    <input type="number" name="angle1" id="angle2" value = "" placeholder="40">
+                </div>
+                
+                <div class="field">
+                    <label for="longitude">Угол 2</label>
+                    <input type="number" name="angle2" id="angle2" value = "" placeholder="70">
+                </div>
+                
+                <div class="field">
+                    <label for="latitude">Полуось a</label>
+                    <input type="number" name="latitude" id="latitude" value = "" placeholder="2">
+                </div>
+                
+                <div class="field">
+                    <label for="longitude">Полуось b</label>
+                    <input type="number" name="longitude" id="longitude" value = "" placeholder="3">
+                </div>
+                <input type="button" value="Удалить">
+            </div>
+            
+        </div>
+        
         <canvas id = "scene" height = "600" width = "1200">
-
         </canvas>
     </div>
     

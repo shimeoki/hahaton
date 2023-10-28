@@ -1,3 +1,5 @@
+
+
 var map = L.map('map').setView([0, 90], 4); // Replace the coordinates and zoom level
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
   map.zoomControl.setPosition('bottomright');
@@ -6,7 +8,8 @@ var longitudeInput = document.getElementById("longitude");
 var radiusInput = document.getElementById("radius");
 var lastLatitudeValue = 0;
 var lastLongitudeValue = 0;
-var lastRadiusValue = 0;
+var lastRadiusValue = 1;
+map.setView([40, 50], 3);
 
 var circle = L.circle([lastLatitudeValue, lastLongitudeValue], {
     color: 'red',    // Circle border color
@@ -47,9 +50,16 @@ function change() {
         } else {
             lastRadiusValue = parseFloat(radiusInput.value);
         }
+        
+        if(lastRadiusValue == 0) {
+            var zoom = 4
+        } else {
+            const earthRadius = 6378137; // Earth's radius in meters
 
-
-    map.setView([lastLatitudeValue, lastLongitudeValue], 4);
+            var pixelsRequired = (lastRadiusValue * 2) / (earthRadius * 2 * Math.PI) * window.innerWidth;
+            var zoom = Math.log2(window.innerWidth / pixelsRequired);
+        }
+        map.setView([lastLatitudeValue, lastLongitudeValue], zoom);
 
     circle.setLatLng([lastLatitudeValue, lastLongitudeValue]);
     circle.setRadius(lastRadiusValue);

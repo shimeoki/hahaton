@@ -20,7 +20,7 @@
 
         const init = () => {
             const sizes = {
-                width: window.innerWidth,
+                width: window.innerWidth - 275,
                 height: window.innerHeight,
             };
         
@@ -51,6 +51,7 @@
 
         loader.load('../static/earth.gltf', (gltf) => {
             var earth = gltf.scene.children[0]
+            //earth.scale.set(5,5,5)
             scene.add(earth)
             var coords = getCenterPoint(earth);
             earth.position.setX(-coords.x)
@@ -88,7 +89,7 @@
         /** Базовые обпаботчики событий длы поддержки ресайза */
         window.addEventListener('resize', () => {
             // Обновляем размеры
-            sizes.width = window.innerWidth;
+            sizes.width = window.innerWidth - 275;
             sizes.height = window.innerHeight;
         
             // Обновляем соотношение сторон камеры

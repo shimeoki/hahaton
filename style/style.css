@@ -16,15 +16,29 @@ textarea:focus, input:focus{
 }
 
 .login{
-    flex-grow: 1;
     display: flex;
     align-items: center; 
-    justify-content: flex-end;
+    justify-content: center;
+    cursor: pointer;
+    width: 300px;
+    background-color: #6369d1;
+    color: black;
+    transition: all .2s;
+    overflow: hidden;
 }
+
+.login.active{
+    background-color: #0F7173;
+}
+.login:hover {
+    background-color: #0F7173;
+    color: white;
+}
+
+
 .login a{
     display: inline-block;
     margin: 0 10px;
-    
     text-decoration: none;
 }
 
@@ -35,6 +49,8 @@ header {
     background: #303046;
     position: relative;
     z-index: 100000;
+    justify-content: space-between;
+
 }
 
 
@@ -53,7 +69,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: width 0.3s;
+    transition: all .3s;
 }
 
 header svg {
@@ -61,7 +77,8 @@ header svg {
 }
 
 .order {
-    transition: width 0.3s;
+    transition: all .3s;
+    transition: color .2s;
     flex-grow: 1;
     text-align: center;
     display: flex;
@@ -72,6 +89,16 @@ header svg {
     font-size: 37px;
     text-shadow: 0 3px 3px rgb(0 0 0 /0.4);
     cursor: pointer;
+}
+.order:hover{
+    color: white;
+    background-color: #0F7173;
+}
+.view:hover{
+    background-color: #0F7173;
+} 
+.view:hover svg{
+    filter: invert(1)
 }
 
 form {
@@ -115,6 +142,7 @@ form {
     height: 60px;
     border-radius: 45px 0 45px 0;
     cursor: pointer;
+    transition: all .2s;
 }
 
 .content input[type = "submit"]:hover{
@@ -128,13 +156,17 @@ form {
 }
 
 .profile{
-    width: 67px;
-    height: 67px;
+    transition: all .2s;
+    width: 65px;
+    height: 65px;
     background-color: white;
     border-radius: 100%; 
     overflow: hidden;
     margin-right: 20px;
     cursor: pointer;
+}
+.active .profile {
+    margin-right: 117.5px;
 }
 .profile svg{
     margin-top: 5px;
@@ -173,14 +205,16 @@ form {
     font-size: 20px;
     background-color: #6369d1;
     padding: 10px;
+    transition: all .2s;
 }
 
 .selection .selected {
-    background-color: #fff;
+    background-color: #0F7173;
 }
 
 .selection span:hover {
     background-color: #0F7173;
+    color: white;
 }
 
 .login-signup form{
@@ -241,6 +275,7 @@ form {
     width: 100%;
     z-index: 1000;
     transition: all 0.3s;
+    display: flex;
 }
 .satelites.hidden{
     top: 100vh;
@@ -250,4 +285,77 @@ form {
 .view-switcher {
     display: flex;
     width: 275px;
+}
+
+.sidebar {
+    width: 275px;
+    height: calc(100vh - 75px);
+    background: white;
+    overflow:scroll
+}
+
+#scene {
+    position: absolute;
+    right: 0;
+}
+#scene:hover{
+    cursor:grab;
+}
+.sidebar input{
+    border-bottom: 3px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    min-width: 0;
+    margin-left: 20px;
+}
+.sidebar label{
+    display: block;
+    width: 40%
+}
+
+.sidebar .field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sidebar .satelite{
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    padding: 10px;
+    margin-bottom:20px;
+}
+
+.sidebar input[type="button"]{
+    width: 100%;
+    margin:0;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.1em;
+    padding: 10px;
+    background-color: #6369d1;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.sidebar input[type="button"]:hover{
+    color: white;
+    background-color: #0F7173;
+    cursor: pointer
+}
+.user{
+    font-size: 1.3em;
+    flex-grow: 1;
+    margin-left: 20px;
+    transition: all .2s;
+}
+.user.hidden {
+    margin-left: -300px;
+}
+
+#add{
+    border-radius: 0;
+    margin: 10px 0;
+    font-size: 1.2em;
 }

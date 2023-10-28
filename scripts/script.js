@@ -1,6 +1,8 @@
+console.log("working")
 
+var satelites = document.querySelector(".satelites")
+var button = document.getElementById("add")
 
-console.log(23)
 var view_icon = `
 <div style = "width: 75px; height: 75px;">
 <?xml version="1.0" encoding="utf-8"?>
@@ -59,7 +61,9 @@ $(".view,.order").on("click", function(){
 })
 
 
-$(".profile").on("click", function(){
+$(".login").on("click", function(){
+    $(".user").toggleClass("hidden")
+    $(".login").toggleClass("active")
     if($(".login-signup").hasClass("shown")) {
         $(".login-signup").removeClass("shown")
     } else {
@@ -71,6 +75,7 @@ $(".profile").on("click", function(){
 var login_selected = true;
 
 $(".selection span").on("click", function(){
+    
     if(!$(this).hasClass("selected")) {
         $(".selection span").removeClass("selected")
         $(this).addClass("selected")
@@ -83,7 +88,39 @@ $(".selection span").on("click", function(){
         login_selected = !login_selected
         console.log(login_selected)
     }
-  
-  
 })
 
+
+
+$("#add").on("click", ()=>{
+    var satelite = document.createElement("div")
+    satelite.classList.add("satelite");
+    satelite.innerHTML = `
+        <div class="field">
+            <label for="name">Название</label>
+            <input type="text" name="angle1" id="angle2" value = "" placeholder="Спутник V">
+        </div>
+        <div class="field">
+            <label for="angle1">Угол 1</label>
+            <input type="number" name="angle1" id="angle2" value = "" placeholder="40">
+        </div>
+
+        <div class="field">
+            <label for="longitude">Угол 2</label>
+            <input type="number" name="angle2" id="angle2" value = "" placeholder="70">
+        </div>
+
+        <div class="field">
+            <label for="latitude">Полуось a</label>
+            <input type="number" name="latitude" id="latitude" value = "" placeholder="2">
+        </div>
+
+        <div class="field">
+            <label for="longitude">Полуось b</label>
+            <input type="number" name="longitude" id="longitude" value = "" placeholder="3">
+        </div>
+        <input type="button" value="Удалить">
+    `
+    button.after(satelite)
+    
+})
