@@ -88,4 +88,12 @@ public class ShotOrder {
     public void setShotDatetime(Date shotDatetime) {
         this.shotDatetime = shotDatetime;
     }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
 }
