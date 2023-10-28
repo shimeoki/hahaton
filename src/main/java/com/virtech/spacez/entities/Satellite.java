@@ -34,6 +34,9 @@ public class Satellite {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private SatelliteOrbit satelliteOrbit;
 
+    @Column(name = "starting_angle")
+    private double startingAngle;
+
     // getters / setters
     
     public int getId() {
@@ -62,5 +65,13 @@ public class Satellite {
 
     public void setSatelliteOrbit(SatelliteOrbit satelliteOrbit) {
         this.satelliteOrbit = satelliteOrbit;
+    }
+
+    public double getStartingAngle() {
+        return startingAngle;
+    }
+
+    public void setStartingAngle(double startingAngle) {
+        this.startingAngle = startingAngle;
     }
 }
