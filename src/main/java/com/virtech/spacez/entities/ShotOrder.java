@@ -51,6 +51,12 @@ public class ShotOrder {
     @Column(name = "radius")
     private double radius;
 
+    @Column(name = "latitude")
+    private double latitude;
+
+    @Column(name = "longitude")
+    private double longitude;
+
     // getters / setters
 
     public int getId() {
@@ -95,5 +101,21 @@ public class ShotOrder {
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
