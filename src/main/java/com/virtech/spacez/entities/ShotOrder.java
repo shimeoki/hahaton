@@ -48,6 +48,9 @@ public class ShotOrder {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date shotDatetime;
 
+    @Column(name = "radius")
+    private double radius;
+
     // getters / setters
 
     public int getId() {
