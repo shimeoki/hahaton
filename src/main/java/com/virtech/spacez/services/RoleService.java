@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.virtech.spacez.entities.Role;
 import com.virtech.spacez.repositories.RoleRepository;
 
+
 @Service
 public class RoleService {
     private final RoleRepository repository;
