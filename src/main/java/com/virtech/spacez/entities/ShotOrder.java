@@ -2,6 +2,7 @@ package com.virtech.spacez.entities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -39,10 +40,12 @@ public class ShotOrder {
 
     @Column(name = "order_datetime", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderDatetime;
 
     @Column(name = "shot_datetime", columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date shotDatetime;
 
     // getters / setters

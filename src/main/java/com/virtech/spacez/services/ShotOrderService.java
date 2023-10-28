@@ -20,7 +20,12 @@ public class ShotOrderService {
         return repository.findAll();
     }
 
-    public ShotOrder create(ShotOrder order) {
-        return repository.save(order);
+    public ShotOrder getById(int id) {
+        return repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Shot Order does not exist."));
+    }
+
+    public ShotOrder create(ShotOrder shotOrder) {
+        return repository.save(shotOrder);
     }
 }
