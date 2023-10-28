@@ -6,6 +6,7 @@ import com.virtech.spacez.logic.angle.Coordinates;
 import com.virtech.spacez.logic.angle.PseudoEulerAngles;
 import com.virtech.spacez.logic.angle.Vector3;
 
+import java.util.Comparator;
 import java.util.Vector;
 
 public class SatelliteLogic {
@@ -28,18 +29,30 @@ public class SatelliteLogic {
 			for (Satellite satellite : satellites) {
 				if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
 					for (double time = Time.current(), finish = Time.fromNow(30 * 24 * 60); time <= finish; time += 1) {
-						Vector3 satelliteVector = new PseudoEulerAngles(satellite.positionInEarthCoordinates()).toVector3();
+						Vector3 satelliteVector = new PseudoEulerAngles(
+								satellite.positionInEarthCoordinates()).toVector3();
 						double viewRadius = getViewRadius(satellite, time);
+
 						PseudoEulerAngles customAngle = new PseudoEulerAngles(coordinates);
 						customAngle.rotateAlongAxis(Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
 						Vector3 customVector = customAngle.toVector3();
-						//if()
+
+						if (viewRadius >= radius + customVector.subtract(satelliteVector).length()) {
+							requests.add(new SatelliteRequest(satellite, time));
+						}
 					}
 				}
 				// else for non-round orbit
 			}
 		}
-		return null;
+		if (!requests.isEmpty()) {
+			Comparator<SatelliteRequest> comparator = (SatelliteRequest r1, SatelliteRequest r2) ->
+					(int) Math.round(r1.timeToTakePhoto - r2.timeToTakePhoto);
+			requests.sort(comparator);
+			return requests.elementAt(0);
+		} else {
+			return null;
+		}
 	}
 
 	private static double getViewRadius(Satellite satellite, double time) {
@@ -53,6 +66,7 @@ public class SatelliteLogic {
 			double k = Math.tan(satellite.fovAngle / 2 - Math.PI / 2);
 			double d = k * k + 4 * R + 4 * r * r + 1;
 			return (k - Math.sqrt(d)) / 2;
+
 		} else {
 			double l = (2 * R * cos - Math.sqrt(D)) / 2;
 			return l * Math.sin(satellite.fovAngle / 2);
