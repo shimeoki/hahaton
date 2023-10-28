@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.virtech.spacez.entities.Order;
-import com.virtech.spacez.services.OrderService;
+import com.virtech.spacez.entities.ShotOrder;
+import com.virtech.spacez.services.ShotOrderService;
 
 
 @RestController
-public class OrderController {
+public class ShotOrderController {
     
-    private final OrderService service;
+    private final ShotOrderService service;
 
-    public OrderController(OrderService service) {
+    public ShotOrderController(ShotOrderService service) {
         this.service = service;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/api/orders")
-    public Order create(@RequestBody Order order) {
+    @PostMapping("/api/shot-orders")
+    public ShotOrder create(@RequestBody ShotOrder order) {
         return service.create(order);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/api/orders")
-    public List<Order> all() {
+    @GetMapping("/api/shot-orders")
+    public List<ShotOrder> all() {
         return service.getAll();
     }
 }
