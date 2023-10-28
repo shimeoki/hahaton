@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 public class Satellite {
 
     // table columns
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -33,7 +34,8 @@ public class Satellite {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private SatelliteOrbit satelliteOrbit;
 
-    // getters/setters
+    // getters / setters
+    
     public int getId() {
         return id;
     }
