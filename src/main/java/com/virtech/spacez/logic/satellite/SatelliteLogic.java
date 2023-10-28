@@ -40,7 +40,7 @@ public class SatelliteLogic {
 						customAngle.rotateAlongAxis(Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
 						Vector3 customVector = customAngle.toVector3();
 
-						if (viewRadius >= radius + customVector.subtract(satelliteVector).length()) {
+						if (viewRadius >= radius + customVector.subtract(satelliteVector).length() * Earth.R) {
 							requests.add(new SatelliteRequest(satellite, time));
 						}
 					}
