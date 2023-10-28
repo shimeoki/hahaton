@@ -28,7 +28,7 @@ public class Satellite {
 
 	public double getAngularVelocity(double time) {
 		// Round orbit only
-		return Math.sqrt(Earth.u / this.orbit.majorAxis);
+		return Math.sqrt(Earth.u / Math.pow(this.orbit.majorAxis, 3));
 	}
 
 	public PseudoEulerAngles getPosition() throws Exception {
@@ -44,7 +44,7 @@ public class Satellite {
 		}
 		PseudoEulerAngles result = new PseudoEulerAngles(orbit.directionAngle.yRotation,
 														 orbit.directionAngle.zRotation);
-		result.rotateAlongAxis(sign * getAngularVelocity() * time, orbit.normalVector);
+		result.rotateAlongAxis(startPositionAngle.zRotation + sign * getAngularVelocity() * time, orbit.normalVector);
 		return result;
 	}
 
@@ -54,7 +54,7 @@ public class Satellite {
 
 	public Coordinates positionInEarthCoordinates(double time) throws Exception {
 		PseudoEulerAngles absolute = getPosition(time);
-		absolute.rotateAlongAxis(-Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
+		absolute.rotateAlongAxis(Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
 		return absolute.coordinates();
 	}
 }

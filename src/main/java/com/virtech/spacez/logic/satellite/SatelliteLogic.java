@@ -25,28 +25,27 @@ public class SatelliteLogic {
 	static SatelliteRequest makeRequest(Coordinates coordinates, double radius) throws Exception {
 		Vector<SatelliteRequest> requests = new Vector<>();
 
-		for (int i = (int) Time.current(); i < 43200; i++) {
-			for (Satellite satellite : satellites) {
-				if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
-					for (double time = Time.current(),
-						 finish = Time.fromNow(30 * 24 * 60 * 60);
-						 time <= finish; time += 60) {
+		for (Satellite satellite : satellites) {
+			if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
+				for (double time = Time.current(),
+					 finish = Time.fromNow(30 * 24 * 60 * 60);
+					 time <= finish; time += 60) {
 
-						Vector3 satelliteVector = new PseudoEulerAngles(
-								satellite.positionInEarthCoordinates()).toVector3();
-						double viewRadius = getViewRadius(satellite, time);
+					Vector3 satelliteVector = new PseudoEulerAngles(
+							satellite.positionInEarthCoordinates()).toVector3();
+					double viewRadius = getViewRadius(satellite, time);
 
-						PseudoEulerAngles customAngle = new PseudoEulerAngles(coordinates);
-						customAngle.rotateAlongAxis(Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
-						Vector3 customVector = customAngle.toVector3();
+					PseudoEulerAngles customAngle = new PseudoEulerAngles(coordinates);
+					customAngle.rotateAlongAxis(Earth.getRotation(time).zRotation, new Vector3(0, 0, 1));
+					Vector3 customVector = customAngle.toVector3();
 
-						if (viewRadius >= radius + customVector.subtract(satelliteVector).length()) {
-							requests.add(new SatelliteRequest(satellite, time));
-						}
+					double dif = customVector.subtract(satelliteVector).length() * Earth.R;
+					if (viewRadius >= radius + dif) {
+						requests.add(new SatelliteRequest(satellite, time));
 					}
 				}
-				// else for non-round orbit
 			}
+			// else for non-round orbit
 		}
 		if (!requests.isEmpty()) {
 			Comparator<SatelliteRequest> comparator = (SatelliteRequest r1, SatelliteRequest r2) ->
