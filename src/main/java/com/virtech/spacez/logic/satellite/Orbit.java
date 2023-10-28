@@ -17,6 +17,4 @@ public class Orbit {
         this.majorAxis = majorAxis + Earth.R;
         this.minorAxis = minorAxis + Earth.R;
     }
-
-
 }
