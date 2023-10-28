@@ -18,7 +18,10 @@ public class PseudoEulerAngles {
 	public PseudoEulerAngles(Vector3 vector) {
 		Vector3 norm = vector.normalized();
 		yRotation = Math.asin(norm.z());
-		zRotation = Math.acos(norm.y());
+		zRotation = Math.acos(norm.x());
+		if (Math.asin(norm.y()) < 0) {
+			zRotation *= -1;
+		}
 	}
 
 	public void rotateAlongAxis(double angle, Vector3 axis) throws Exception {
