@@ -12,28 +12,19 @@ import jakarta.persistence.Table;
 public class Role {
 
     // table columns
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
-    // constructors
-    public Role() {}
-
-    public Role(String name) {
-        this.name = name;
-    }
-
     // getters/setters
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public String getName() {

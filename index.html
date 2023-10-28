@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <script src="scripts/jQuery.js"></script>
-    <script type="module" src="scripts/script.js"></script>
-    <title>SpaceView</title>
+    <script src="/scripts/jQuery.js"></script>
+    <script type = "module" src="/scripts/script.js"></script>
+
+    <title>SpaceZ</title>
 </head>
 <body>
-    
     <div class="logo">
         <?xml version="1.0" encoding="UTF-8"?>
         <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800.00181 800.00828">
@@ -85,28 +85,28 @@
         </div>
         <form action="POST" name = "login" >
             <label for="login">Почта</label>
-            <input type="text" name="latitude" id="login" value = "">
+            <input type="text" name="login" id="login" value = "">
 
             <label for="password">Пароль</label>
-            <input type="text" name="latitude" id="password" value = "">
+            <input type="password" name="password" id="login-password" value = "">
 
             <input type="submit" value="Вход">
         </form>
         <form action="POST" name = "register" class = "hidden">
-            <label for="login">Фамилия</label>
-            <input type="text" name="latitude" id="login" value = "">
+            <label for="surname">Фамилия</label>
+            <input type="text" name="surname" id="surname" value = "">
 
-            <label for="login">Имя</label>
-            <input type="text" name="latitude" id="login" value = "">
+            <label for="name">Имя</label>
+            <input type="text" name="name" id="name" value = "">
 
-            <label for="login">Почта</label>
-            <input type="text" name="latitude" id="login" value = "">
+            <label for="email">Почта</label>
+            <input type="email" name="email" id="email" value = "">
 
             <label for="password">Придумайте пароль</label>
-            <input type="text" name="latitude" id="password" value = "">
+            <input type="password" name="password" id="password" value = "">
 
-            <label for="password">Повторите пароль</label>
-            <input type="text" name="latitude" id="password" value = "">
+            <label for="repeat-password">Повторите пароль</label>
+            <input type="password" name="repeat-password" id="repeat-password" value = "">
 
             <input type="submit" value="Регистрация">
         </form>
@@ -123,16 +123,19 @@
             <label for="radius">Радиус*</label>
             <input type="number" name="radius" id="radius" placeholder="12000 (в метрах)">
 
-            <input type="submit" value="Отправить" method = "POST">
+            <input type="submit" value="Отправить">
         </form>
 
         <div id="map" style="width: 100%; height: 100%;"></div>
     </div>
 
-    <div class="satelites hidden" class = "hidden">
-        
-    </div>
+    <div class="satelites hidden" >
+        <canvas id = "scene" height = "600" width = "1200">
 
-    <script src="scripts/map.js"></script>
+        </canvas>
+    </div>
+    
+    <script type="module" src="/scripts/visualisation.js"></script>
+    <script src="/scripts/map.js"></script>
 </body>
 </html>
