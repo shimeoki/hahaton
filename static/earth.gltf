@@ -3,12 +3,16 @@
 		"generator":"Khronos glTF Blender I/O v3.6.28",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_unlit"
+	],
 	"scene":0,
 	"scenes":[
 		{
 			"name":"Scene",
 			"nodes":[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -21,6 +25,21 @@
 				0.7071067094802856,
 				0,
 				0.7071068286895752
+			]
+		},
+		{
+			"mesh":1,
+			"name":"earth 1.001",
+			"rotation":[
+				0,
+				0.7071067094802856,
+				0,
+				0.7071068286895752
+			],
+			"scale":[
+				132.3847198486328,
+				132.3847198486328,
+				132.3847198486328
 			]
 		}
 	],
@@ -38,6 +57,18 @@
 					"index":1
 				}
 			}
+		},
+		{
+			"alphaMode":"BLEND",
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_unlit":{}
+			},
+			"name":"earth 1.001",
+			"pbrMetallicRoughness":{
+				"metallicFactor":0,
+				"roughnessFactor":0.9
+			}
 		}
 	],
 	"meshes":[
@@ -52,6 +83,20 @@
 					},
 					"indices":3,
 					"material":0
+				}
+			]
+		},
+		{
+			"name":"earth 1.001",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
+					},
+					"indices":3,
+					"material":1
 				}
 			]
 		}
@@ -84,14 +129,14 @@
 			"componentType":5126,
 			"count":8385,
 			"max":[
-				0.31830984354019165,
+				0.31830987334251404,
 				0.318310022354126,
-				0
+				0.31830987334251404
 			],
 			"min":[
-				-0.3183099031448364,
+				-0.31830987334251404,
 				-0.3183099925518036,
-				-0.6366198062896729
+				-0.3183099329471588
 			],
 			"type":"VEC3"
 		},
@@ -112,6 +157,34 @@
 			"componentType":5123,
 			"count":48396,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":4,
+			"componentType":5126,
+			"count":8385,
+			"max":[
+				0.31830987334251404,
+				0.318310022354126,
+				0.31830987334251404
+			],
+			"min":[
+				-0.31830987334251404,
+				-0.3183099925518036,
+				-0.3183099329471588
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":5,
+			"componentType":5126,
+			"count":8385,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":8385,
+			"type":"VEC2"
 		}
 	],
 	"bufferViews":[
@@ -138,6 +211,24 @@
 			"byteLength":96792,
 			"byteOffset":268320,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":100620,
+			"byteOffset":365112,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":100620,
+			"byteOffset":465732,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":67080,
+			"byteOffset":566352,
+			"target":34962
 		}
 	],
 	"samplers":[
@@ -150,7 +241,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":365112,
+			"byteLength":633432,
 			"uri":"earth.bin"
 		}
 	]
