@@ -28,7 +28,10 @@ public class SatelliteLogic {
 		for (int i = (int) Time.current(); i < 43200; i++) {
 			for (Satellite satellite : satellites) {
 				if (satellite.orbit.majorAxis == satellite.orbit.minorAxis) {
-					for (double time = Time.current(), finish = Time.fromNow(30 * 24 * 60); time <= finish; time += 1) {
+					for (double time = Time.current(),
+						 finish = Time.fromNow(30 * 24 * 60 * 60);
+						 time <= finish; time += 60) {
+
 						Vector3 satelliteVector = new PseudoEulerAngles(
 								satellite.positionInEarthCoordinates()).toVector3();
 						double viewRadius = getViewRadius(satellite, time);
