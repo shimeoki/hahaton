@@ -1,4 +1,4 @@
-import { Object3D } from '../core/Object3D.js';
+import { Object3D } from 'three/src/core/Object3D.js';
 
 class Audio extends Object3D {
 

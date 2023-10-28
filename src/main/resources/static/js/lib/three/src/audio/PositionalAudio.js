@@ -1,6 +1,6 @@
-import { Vector3 } from '../math/Vector3.js';
-import { Quaternion } from '../math/Quaternion.js';
-import { Audio } from './Audio.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
+import { Quaternion } from 'three/src/math/Quaternion.js';
+import { Audio } from 'three/src/audio/Audio.js';
 
 const _position = /*@__PURE__*/ new Vector3();
 const _quaternion = /*@__PURE__*/ new Quaternion();

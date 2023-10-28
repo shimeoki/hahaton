@@ -1,4 +1,4 @@
-import * as MathUtils from './MathUtils.js';
+import * as MathUtils from 'three/src/math/MathUtils.js';
 
 class Quaternion {
 
