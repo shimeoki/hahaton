@@ -15,9 +15,10 @@ public class PseudoEulerAngles {
 		this.zRotation = coordinates.longitude / 180 * Math.PI;
 	}
 
-	public PseudoEulerAngles(Vector3 vector) {
+	public PseudoEulerAngles(Vector3 vector) throws Exception{
 		Vector3 norm = vector.normalized();
 		yRotation = Math.asin(norm.z());
+		norm = norm.subtract(new Vector3(0, 0, norm.z())).normalized();
 		zRotation = Math.acos(norm.x());
 		if (Math.asin(norm.y()) < 0) {
 			zRotation *= -1;

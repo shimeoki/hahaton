@@ -44,7 +44,7 @@ public class Satellite {
 		}
 		PseudoEulerAngles result = new PseudoEulerAngles(orbit.directionAngle.yRotation,
 														 orbit.directionAngle.zRotation);
-		result.rotateAlongAxis(sign * getAngularVelocity() * time, orbit.normalVector);
+		result.rotateAlongAxis(startPositionAngle.zRotation + sign * getAngularVelocity() * time, orbit.normalVector);
 		return result;
 	}
 
